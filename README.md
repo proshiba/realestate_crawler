@@ -15,7 +15,7 @@ pip install -r requirements.txt
 以下を実行してください。  
 
 ```bash
-python crawler.py
+python crawler.py -function rent_data
 ```
 
 実行結果は以下の２つにインストールされます。  

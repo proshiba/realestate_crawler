@@ -52,6 +52,9 @@ def get_extracted_text(image):
 def has_prefecture_suffix(text):
     return "県" in text or "都" in text or "府" in text or "道" in text
 
+def parse_price(text):
+    return text.replace("\\", "").replace(".", "").replace(",", "")
+
 def extract_rent_data(extracted_text):
     # 抽出されたテキストを行ごとに分割
     lines = extracted_text.split("\n")
@@ -69,12 +72,12 @@ def extract_rent_data(extracted_text):
                 else:
                     each_value = each.strip()
                     each_pref_data.append(each_value)
-            tmp = [ each_pref_data[0].strip() ]
+            prefecture = each_pref_data[0].strip()
             for each in each_pref_data[1:]:
                 for each_field in each.split(" "):
                     if each_field.startswith("\\"):
-                        tmp.append(each_field.strip())
-            data.append([tmp[0], tmp[1]])
+                        price = parse_price(each_field.strip())
+            data.append([prefecture, price])
     return data
 
 def save_extracted_data(data, filename):

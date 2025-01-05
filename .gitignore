@@ -170,5 +170,6 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-# zip
+# data file etc is ignored
 *.zip
+data/*
