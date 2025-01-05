@@ -3,3 +3,4 @@ selenium
 pytesseract
 beautifulsoup4
 pandas
+boto3
